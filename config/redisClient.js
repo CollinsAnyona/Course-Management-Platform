@@ -1,4 +1,3 @@
-// config/redisClient.js
 const { Queue } = require('bullmq');
 
 const connection = {
