@@ -146,15 +146,11 @@ npm test
 
 ## Contributors
 
-- Atek Jr (Executive Developer)
-- [Your Name Here]
-
+- Otieno Collins Jr (Executive Developer)
 ---
 
-## License
-
-This project is licensed under the MIT License.
-
-
-Reflection Page
+## Reflection page
 https://collinsanyona.github.io/Course-Management-Platform/
+
+## Video Walkthrough
+https://youtu.be/bWzbeamiVxg
