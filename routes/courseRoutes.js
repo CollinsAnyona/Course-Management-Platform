@@ -1,9 +1,9 @@
 /**
  * @swagger
- * /cohorts:
+ * /courses:
  *   post:
- *     summary: Create a cohort and intake
- *     tags: [Cohorts]
+ *     summary: Create a new course
+ *     tags: [Courses]
  *     requestBody:
  *       required: true
  *       content:
@@ -13,18 +13,25 @@
  *             properties:
  *               name:
  *                 type: string
- *               intake:
+ *               code:
  *                 type: string
  *     responses:
  *       201:
- *         description: Cohort created
+ *         description: Course created
  */
 
 
 const express = require('express');
 const router = express.Router();
-const intakeController = require('../controllers/intakeController');
+const courseController = require('../controllers/courseController');
+const { authenticate, restrictTo } = require('../middlewares/auth.middleware');
 
-router.get('/', intakeController.getAllIntakes);
+router.post(
+  '/',
+  authenticate,
+  restrictTo('Admin', 'Manager'),
+  courseController.createCourse
+);
 
 module.exports = router;
+

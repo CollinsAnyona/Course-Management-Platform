@@ -6,7 +6,7 @@ const reminderQueue = new Queue('reminderQueue', { connection });
 
 async function addTestJob() {
   await reminderQueue.add('sendReminder', {
-    facilitatorEmail: 'your-email@gmail.com',   // <-- Replace with YOUR email
+    facilitatorEmail: 'c.junior@alustudent.com',  
     facilitatorName: 'Test Facilitator',
     allocationId: 'ABC123',
     weekNumber: 5

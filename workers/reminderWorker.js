@@ -7,7 +7,7 @@ const reminderWorker = new Worker(
   async job => {
     const { facilitatorEmail, facilitatorName, allocationId, weekNumber } = job.data;
 
-    console.log(`📤 Sending reminder email to ${facilitatorEmail} for week ${weekNumber}...`);
+    console.log(`Sending reminder email to ${facilitatorEmail} for week ${weekNumber}...`);
 
     const mailOptions = {
       from: process.env.EMAIL_USER,
@@ -23,20 +23,20 @@ Course Management System`
 
     try {
       await transporter.sendMail(mailOptions);
-      console.log(`✅ Email sent to: ${facilitatorEmail}`);
+      console.log(`Email sent to: ${facilitatorEmail}`);
     } catch (err) {
-      console.error(`❌ Failed to send email to ${facilitatorEmail}:`, err.message);
+      console.error(`Failed to send email to ${facilitatorEmail}:`, err.message);
     }
   },
   { connection }
 );
 
 reminderWorker.on('completed', job => {
-  console.log(`📨 Job completed for: ${job.data.facilitatorEmail}`);
+  console.log(`Job completed for: ${job.data.facilitatorEmail}`);
 });
 
 reminderWorker.on('failed', (job, err) => {
-  console.error(`❌ Job failed for ${job.data.facilitatorEmail}:`, err.message);
+  console.error(`Job failed for ${job.data.facilitatorEmail}:`, err.message);
 });
 
 module.exports = reminderWorker;

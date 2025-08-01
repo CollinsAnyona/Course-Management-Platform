@@ -1,4 +1,3 @@
-// middleware/authorizeRole.js
 module.exports = function authorizeRole(...allowedRoles) {
     return (req, res, next) => {
       const { role } = req.user;

@@ -6,7 +6,7 @@ module.exports = (sequelize, DataTypes) => {
   class User extends Model {
     toJSON() {
       const attributes = { ...this.get() };
-      delete attributes.password; // Exclude password from JSON responses
+      delete attributes.password; 
       return attributes;
     }
 
@@ -41,7 +41,7 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.STRING,
         allowNull: false,
         validate: {
-          isIn: [['Admin', 'Manager', 'Facilitator']], // predefined roles
+          isIn: [['Admin', 'Manager', 'Facilitator']],
         },
       },
     },

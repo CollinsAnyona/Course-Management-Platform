@@ -3,7 +3,6 @@ const { reminderQueue } = require('../config/redisClient');
 const { User, CourseAllocation } = require('../models');
 const { Op } = require('sequelize');
 
-// Schedule for every Sunday at 6 PM
 cron.schedule('0 18 * * 0', async () => {
   console.log('Running weekly reminder scheduler...');
 

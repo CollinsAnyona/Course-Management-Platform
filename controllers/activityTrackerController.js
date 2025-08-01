@@ -1,10 +1,9 @@
 const { ActivityTracker, CourseOffering } = require('../models');
 const { Op } = require('sequelize');
 
-// Create log (Facilitator)
 exports.create = async (req, res) => {
   try {
-    const facilitatorId = req.user.id; // pulled from token
+    const facilitatorId = req.user.id;
     const { allocationId, weekNumber } = req.body;
 
     const existing = await ActivityTracker.findOne({
@@ -22,7 +21,7 @@ exports.create = async (req, res) => {
   }
 };
 
-// Read all logs (Manager)
+// Read all logs
 exports.findAll = async (req, res) => {
   try {
     const { courseId, facilitatorId, weekNumber, status } = req.query;
@@ -55,7 +54,7 @@ exports.findAll = async (req, res) => {
   }
 };
 
-// Read single log (Manager)
+// Read single log
 exports.findOne = async (req, res) => {
   try {
     const log = await ActivityTracker.findByPk(req.params.id);
@@ -66,7 +65,7 @@ exports.findOne = async (req, res) => {
   }
 };
 
-// Update log (Facilitator)
+// Update log
 exports.update = async (req, res) => {
   try {
     const facilitatorId = req.user.id;

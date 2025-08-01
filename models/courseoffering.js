@@ -4,45 +4,46 @@ const { Model } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
   class CourseOffering extends Model {
     static associate(models) {
-      CourseOffering.belongsTo(models.Module, {
-        foreignKey: 'moduleId',
-        as: 'module'
+      CourseOffering.belongsTo(models.Course, {
+        foreignKey: { name: 'courseId', field: 'courseId' },
+        as: 'course'
       });
       CourseOffering.belongsTo(models.Facilitator, {
-        foreignKey: 'facilitatorId',
+        foreignKey: { name: 'facilitatorId', field: 'facilitatorId' },
         as: 'facilitator'
       });
       CourseOffering.belongsTo(models.Cohort, {
-        foreignKey: 'cohortId',
+        foreignKey: { name: 'cohortId', field: 'cohortId' },
         as: 'cohort'
       });
       CourseOffering.belongsTo(models.Class, {
-        foreignKey: 'classId',
+        foreignKey: { name: 'classId', field: 'classId' },
         as: 'class'
       });
       CourseOffering.belongsTo(models.IntakePeriod, {
-        foreignKey: 'intakePeriodId',
+        foreignKey: { name: 'intakePeriodId', field: 'intakePeriodId' },
         as: 'intakePeriod'
       });
       CourseOffering.belongsTo(models.Mode, {
-        foreignKey: 'modeId',
+        foreignKey: { name: 'modeId', field: 'modeId' },
         as: 'mode'
       });
     }
   }
 
   CourseOffering.init({
-    moduleId: DataTypes.INTEGER,
-    classId: DataTypes.INTEGER,
+    trimester: DataTypes.STRING,
+    courseId: DataTypes.INTEGER,
+    facilitatorId: DataTypes.INTEGER,
     cohortId: DataTypes.INTEGER,
+    classId: DataTypes.INTEGER,
     intakePeriodId: DataTypes.INTEGER,
     modeId: DataTypes.INTEGER,
-    facilitatorId: DataTypes.INTEGER,
-    trimester: DataTypes.STRING
   }, {
     sequelize,
     modelName: 'CourseOffering',
   });
+  
 
   return CourseOffering;
 };

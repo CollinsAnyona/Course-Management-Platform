@@ -6,12 +6,13 @@ const cors = require('cors');
 const { sequelize } = require('./models');
 const authRoutes = require('./routes/auth.routes'); 
 const courseOfferingRoutes = require('./routes/courseOfferingRoutes');
-const moduleRoutes = require('./routes/moduleRoutes');
+const courseRoutes = require('./routes/courseRoutes');
 const userRoutes = require('./routes/userRoutes');
 const cohortRoutes = require('./routes/cohortRoutes');
 const facilitatorRoutes = require('./routes/facilitatorRoutes');
 const intakeRoutes = require('./routes/intakeRoutes');
 const db = require('./models');
+const setupSwagger = require('./swagger');
 
 const app = express();
 
@@ -22,9 +23,10 @@ app.use('/api/course-offerings', courseOfferingRoutes);
 app.use('/api/activity-tracker', require('./routes/activityTrackerRoutes'));
 app.use('/api/users', userRoutes);
 app.use('/api/cohorts', cohortRoutes);
-app.use('/api/modules', moduleRoutes);
+app.use('/api/courses', courseRoutes);
 app.use('/api/facilitators', facilitatorRoutes);
 app.use('/api/intakes', intakeRoutes);
+setupSwagger(app);
 
 const PORT = process.env.PORT || 3000;
 
